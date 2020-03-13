@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "6c33ee3e-d9c0-4d73-bdf3-5709a17faff1",
+		"name": "cnode-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-requests",
+			"item": [
+				{
+					"name": "主题首页-不带参数的get请求",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/topics",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "主题首页-带参数的get请求",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/topics ?page=1&tab=share&limit=1&mdrender=false",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"topics "
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "页数"
+								},
+								{
+									"key": "tab",
+									"value": "share",
+									"description": "分享页"
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"description": "话题数量"
+								},
+								{
+									"key": "mdrender",
+									"value": "false",
+									"description": "markdown语法"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "get请求",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "post-requests",
+			"item": [],
+			"description": "post请求",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
