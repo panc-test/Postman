@@ -9,10 +9,266 @@
 			"name": "get-requests",
 			"item": [
 				{
-					"name": "主题首页-不带参数的get请求",
+					"name": "主题首页",
 					"request": {
 						"method": "GET",
 						"header": [],
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/topics?page=1&tab=share&limit=1&mdrender=false",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"topics"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "页数"
+								},
+								{
+									"key": "tab",
+									"value": "share",
+									"description": "分享页"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "mdrender",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "主题详情",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/topic/:id ?mdrender=false",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"topic",
+								":id "
+							],
+							"query": [
+								{
+									"key": "mdrender",
+									"value": "false"
+								}
+							],
+							"variable": [
+								{
+									"key": "id ",
+									"value": "5e6b424b5415320684b22e66"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户收藏的所有话题",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/topic_collect/:loginname",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"topic_collect",
+								":loginname"
+							],
+							"variable": [
+								{
+									"key": "loginname",
+									"value": "testuser1",
+									"description": "用户名"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/user/:loginname",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":loginname"
+							],
+							"variable": [
+								{
+									"key": "loginname",
+									"value": "user12",
+									"description": "用户"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "未读消息数",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/message/count?accesstoken=bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"message",
+								"count"
+							],
+							"query": [
+								{
+									"key": "accesstoken",
+									"value": "bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
+									"description": "testuser1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取所有的已读和未读消息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/messages?accesstoken=bdf578b3-cf01-4418-97ed-5ca98c4edeb3&mdrender=false",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "accesstoken",
+									"value": "bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
+									"description": "testuser1"
+								},
+								{
+									"key": "mdrender",
+									"value": "false",
+									"description": "markdown语法"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "get请求",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "post-requests",
+			"item": [
+				{
+					"name": "发布话题",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "accesstoken",
+									"value": "4ace590d-21da-4d9b-b181-7a20dd5de008",
+									"description": "token值",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "测试-新建话题",
+									"description": "标题",
+									"type": "text"
+								},
+								{
+									"key": "tab",
+									"value": "share",
+									"description": "标签",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "hahaitioarueirueaoiru",
+									"description": "内容",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
 							"raw": "http://39.107.96.138:3000/api/v1/topics",
 							"protocol": "http",
@@ -33,12 +289,28 @@
 					"response": []
 				},
 				{
-					"name": "主题首页-带参数的get请求",
+					"name": "编辑话题",
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"accesstoken\":\"4ace590d-21da-4d9b-b181-7a20dd5de008\",\n\t\"topic_id\":\"5e6b44085415320684b22e6b\",\n\t\"title\":\"xxxxxxxxx\",\n\t\"tab\":\"ask\",\n\t\"content\":\"2222222222\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topics ?page=1&tab=share&limit=1&mdrender=false",
+							"raw": "http://39.107.96.138:3000/api/v1/topics/update",
 							"protocol": "http",
 							"host": [
 								"39",
@@ -50,28 +322,301 @@
 							"path": [
 								"api",
 								"v1",
-								"topics "
+								"topics",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "收藏话题",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "accesstoken ",
+									"value": "66b0c946-6369-4fbd-9b99-e49f6d4f328e",
+									"description": " 用户的 accessToken",
+									"type": "text"
+								},
+								{
+									"key": "topic_id ",
+									"value": "5e6c7af55415320684b23041",
+									"description": "主题的id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/topic_collect/collect",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
 							],
-							"query": [
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"topic_collect",
+								"collect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消收藏",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
 								{
-									"key": "page",
-									"value": "1",
-									"description": "页数"
+									"key": "accesstoken",
+									"value": "bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
+									"description": " 用户的 accessToken",
+									"type": "text"
 								},
 								{
-									"key": "tab",
-									"value": "share",
-									"description": "分享页"
+									"key": "topic_id",
+									"value": "5e6c7af55415320684b23041",
+									"description": "主题id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/topic_collect/de_collect",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"topic_collect",
+								"de_collect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新建评论",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "accesstoken",
+									"value": "bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
+									"description": "用户的 accessToken",
+									"type": "text"
 								},
 								{
-									"key": "limit",
-									"value": "1",
-									"description": "话题数量"
+									"key": "content",
+									"value": "xxxxxxxx",
+									"description": "评论内容",
+									"type": "text"
 								},
 								{
-									"key": "mdrender",
-									"value": "false",
-									"description": "markdown语法"
+									"key": "replay_id",
+									"value": "5e6c863d5415320684b23081",
+									"description": "对另一个评论回复",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/topic/:topic_id/replies",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"topic",
+								":topic_id",
+								"replies"
+							],
+							"variable": [
+								{
+									"key": "topic_id",
+									"value": "5e6c801d5415320684b23057",
+									"description": "要评论的话题"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "为 评论点赞/取消点赞",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "accesstoken",
+									"value": "19f70039-f9da-4ac6-98b2-0f4ba2bc2081",
+									"description": "testuser18",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/reply/:reply_id/ups",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"reply",
+								":reply_id",
+								"ups"
+							],
+							"variable": [
+								{
+									"key": "reply_id",
+									"value": "5e6c86845415320684b23087"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "验证token值正确性",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "accesstoken",
+									"value": "19f70039-f9da-4ac6-98b2-0f4ba2bc2081",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/accesstoken ",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"accesstoken "
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "全部消息标记已读",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "accesstoken",
+									"value": "bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/message/mark_all ",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"message",
+								"mark_all "
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "标记单个消息为已读",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "accesstoken",
+									"value": "bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://39.107.96.138:3000/api/v1/message/mark_one/:msg_id",
+							"protocol": "http",
+							"host": [
+								"39",
+								"107",
+								"96",
+								"138"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"message",
+								"mark_one",
+								":msg_id"
+							],
+							"variable": [
+								{
+									"key": "msg_id",
+									"value": "5e6ca2f25415320684b230fb"
 								}
 							]
 						}
@@ -79,12 +624,6 @@
 					"response": []
 				}
 			],
-			"description": "get请求",
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "post-requests",
-			"item": [],
 			"description": "post请求",
 			"protocolProfileBehavior": {}
 		}
