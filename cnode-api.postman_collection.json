@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "6c33ee3e-d9c0-4d73-bdf3-5709a17faff1",
 		"name": "cnode-api",
+		"description": "cnode接口学习",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -10,17 +11,56 @@
 			"item": [
 				{
 					"name": "主题首页",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a7a9b59c-2cb2-4db9-bfc1-8b33b5b0d544",
+								"exec": [
+									"//javascript教程：https://javascript.ruanyifeng.com/",
+									"",
+									"",
+									"//断言状态码是否等于200",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//断言响应时间小于200ms",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"//断言response部分数据长度为1",
+									"pm.test(\"返回体data部分数据长度为1\", function () {",
+									"",
+									"    //获取返回体json数据类型",
+									"    var jsonData = pm.response.json();",
+									"    console.log('response==',jsonData)",
+									"    console.log('data length==',jsonData['data'].length)",
+									"",
+									"    //实际结果和预期结果对比",
+									"    pm.expect(jsonData['data'].length).to.eql(1);",
+									"    ",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topics?page=1&tab=share&limit=1&mdrender=false",
+							"raw": "http://49.233.108.117:3000/api/v1/topics?page=1&tab=share&limit=1&mdrender=false",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -41,11 +81,13 @@
 								},
 								{
 									"key": "limit",
-									"value": "1"
+									"value": "1",
+									"description": "每页的主题数量"
 								},
 								{
 									"key": "mdrender",
-									"value": "false"
+									"value": "false",
+									"description": "不渲染markdownn文本"
 								}
 							]
 						}
@@ -54,17 +96,33 @@
 				},
 				{
 					"name": "主题详情",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2b25c0aa-dcd1-40f3-bd82-c9e61ec3ae17",
+								"exec": [
+									"//断言test1用户是否收藏该主题\r",
+									"pm.test(\"is_collect is true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData['is_collect'])=='true';\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topic/:id ?mdrender=false",
+							"raw": "http://49.233.108.117:3000/api/v1/topic/:id ?mdrender=false",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -76,13 +134,15 @@
 							"query": [
 								{
 									"key": "mdrender",
-									"value": "false"
+									"value": "false",
+									"description": "当为 false 时，不渲染。默认为 true，渲染出现的所有 markdown 格式文本"
 								}
 							],
 							"variable": [
 								{
 									"key": "id ",
-									"value": "5e6b424b5415320684b22e66"
+									"value": "5f59e27e95933d295b621564",
+									"description": "被查看的主题id"
 								}
 							]
 						}
@@ -95,13 +155,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topic_collect/:loginname",
+							"raw": "http://49.233.108.117:3000/api/v1/topic_collect/:loginname",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -127,13 +187,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/user/:loginname",
+							"raw": "http://49.233.108.117:3000/api/v1/user/:loginname",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -159,13 +219,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/message/count?accesstoken=bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
+							"raw": "http://49.233.108.117:3000/api/v1/message/count?accesstoken={{token}}",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -177,8 +237,7 @@
 							"query": [
 								{
 									"key": "accesstoken",
-									"value": "bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
-									"description": "testuser1"
+									"value": "{{token}}"
 								}
 							]
 						}
@@ -191,13 +250,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/messages?accesstoken=bdf578b3-cf01-4418-97ed-5ca98c4edeb3&mdrender=false",
+							"raw": "http://49.233.108.117:3000/api/v1/messages?accesstoken={{token}}&mdrender=false",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -208,8 +267,7 @@
 							"query": [
 								{
 									"key": "accesstoken",
-									"value": "bdf578b3-cf01-4418-97ed-5ca98c4edeb3",
-									"description": "testuser1"
+									"value": "{{token}}"
 								},
 								{
 									"key": "mdrender",
@@ -230,6 +288,40 @@
 			"item": [
 				{
 					"name": "发布话题",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "52523452-45aa-4142-8856-70592a84e622",
+								"exec": [
+									"//将发帖成功的topic_id定义成环境变量，提供给其它接口调用",
+									"",
+									"//获取返回体json数据类型",
+									"var jsonData = pm.response.json();",
+									"",
+									"//将发帖成功的 topic_id 值赋值给变量 topicid",
+									"var topicid=jsonData['topic_id']",
+									"",
+									"//设置环境变量 topicid ，其值等于 topicid",
+									"pm.environment.set(\"topicid\", topicid);",
+									"",
+									"",
+									"",
+									"//断言返回码",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//断言返回体中success的值",
+									"pm.test(\"success==true\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData['success'])=='true';",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -245,13 +337,13 @@
 							"urlencoded": [
 								{
 									"key": "accesstoken",
-									"value": "4ace590d-21da-4d9b-b181-7a20dd5de008",
+									"value": "{{token}}",
 									"description": "token值",
 									"type": "text"
 								},
 								{
 									"key": "title",
-									"value": "测试-新建话题",
+									"value": "test发布主题",
 									"description": "标题",
 									"type": "text"
 								},
@@ -267,16 +359,21 @@
 									"description": "内容",
 									"type": "text"
 								}
-							]
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topics",
+							"raw": "http://49.233.108.117:3000/api/v1/topics",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -290,19 +387,65 @@
 				},
 				{
 					"name": "编辑话题",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93199e76-7e54-4b12-b58d-39a29f552396",
+								"exec": [
+									"//获取期望的topic_id值",
+									"var except_topicid=pm.environment.get(\"topicid\");",
+									"",
+									"",
+									"//断言topic_id的期望值和实际值",
+									"pm.test(\"topic_id值一致\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData['topic_id']).to.eql(except_topicid);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
 								"name": "Content-Type",
-								"value": "application/json",
+								"value": "application/x-www-form-urlencoded",
 								"type": "text"
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"accesstoken\":\"4ace590d-21da-4d9b-b181-7a20dd5de008\",\n\t\"topic_id\":\"5e6b44085415320684b22e6b\",\n\t\"title\":\"xxxxxxxxx\",\n\t\"tab\":\"ask\",\n\t\"content\":\"2222222222\"\n}",
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "accesstoken",
+									"value": "{{token}}",
+									"type": "text"
+								},
+								{
+									"key": "topic_id",
+									"value": "{{topicid}}",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "xxxxxxxxxxx",
+									"type": "text"
+								},
+								{
+									"key": "tab",
+									"value": "share",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "222222222",
+									"type": "text"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -310,13 +453,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topics/update",
+							"raw": "http://49.233.108.117:3000/api/v1/topics/update",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -352,13 +495,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topic_collect/collect",
+							"raw": "http://49.233.108.117:3000/api/v1/topic_collect/collect",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -394,13 +537,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topic_collect/de_collect",
+							"raw": "http://49.233.108.117:3000/api/v1/topic_collect/de_collect",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -442,13 +585,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/topic/:topic_id/replies",
+							"raw": "http://49.233.108.117:3000/api/v1/topic/:topic_id/replies",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -486,13 +629,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/reply/:reply_id/ups",
+							"raw": "http://49.233.108.117:3000/api/v1/reply/:reply_id/ups",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -528,13 +671,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/accesstoken ",
+							"raw": "http://49.233.108.117:3000/api/v1/accesstoken ",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -562,13 +705,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/message/mark_all ",
+							"raw": "http://49.233.108.117:3000/api/v1/message/mark_all ",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [
@@ -597,13 +740,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://39.107.96.138:3000/api/v1/message/mark_one/:msg_id",
+							"raw": "http://49.233.108.117:3000/api/v1/message/mark_one/:msg_id",
 							"protocol": "http",
 							"host": [
-								"39",
-								"107",
-								"96",
-								"138"
+								"49",
+								"233",
+								"108",
+								"117"
 							],
 							"port": "3000",
 							"path": [

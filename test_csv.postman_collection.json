@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "cb176a01-3527-4369-a729-2a5773b2176b",
+		"name": "test_csv",
+		"description": "测试数据保存在csv文件，运行接口的时候加载csv文件中的测试数据",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "主题首页",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f5c74aa-c440-4768-964a-1db0b70ead0d",
+						"exec": [
+							"//断言状态码是否等于200",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/topics?page={{page}}&tab={{tab}}&limit={{limit}}&mdrender={{mdrender}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"topics"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "{{page}}",
+							"description": "页数"
+						},
+						{
+							"key": "tab",
+							"value": "{{tab}}",
+							"description": "分享页"
+						},
+						{
+							"key": "limit",
+							"value": "{{limit}}",
+							"description": "每页的主题数量"
+						},
+						{
+							"key": "mdrender",
+							"value": "{{mdrender}}",
+							"description": "不渲染markdownn文本"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
